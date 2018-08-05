@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Created By Kyle West | April 2017 -->
+<!-- 
+   This document is intended to help people study and memorize 
+   THE FAMILY: A PROCLAMATION TO THE WORLD. It is authorized 
+   for both private and academic use. Study on my friends!
+ -->
+
+<html>
+
+<head>
+  <script src="settings.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>THE FAMILY: A PROCLAMATION TO THE WORLD Test</title>
+</head>
+
+<body onload='populate_test()'>
+  <div class='main'>
+    <details class='save-state' id='settings'>
+      <summary>Settings:</summary>
+      <ul>
+        <li>
+          Test hardness level (1 to 5, where 5 is the hardest):
+          <input id='level' class='save-state' type='number' value='3' min="1" max="5"/>
+        </li>
+      <ul>
+    </details>
+    <details class='save-state' id='instructions'>
+      <summary>Instructions:</summary>
+        Set the hardness level under Settings to the desired amount. Fill in the blanks
+        to the best of your abilities. When you are done, click the [Grade Practice Test]
+        button. A score will be shown, and the incorrect entries will be highlighted in a 
+        thick red box. If you hover your cursor over the box and wait a few seconds, the 
+        correct answer will be shown. 
+    </details>
+    <br/>
+    <hr>
+    <h1>THE FAMILY</h1>
+    <h3>A PROCLAMATION TO THE WORLD</h3>
+    <h5>The First Presidency and Council of the Twelve Apostles of The Church of Jesus Christ of Latter-day Saints</h5>
+    <hr>
+
+    <div id="paragraphs"></div>
+    <br/>
+    <br/>
+    <input type="button" value="Grade Practice Test" onclick='grade()' />
+    <h3 id='grade'></h3>
+    <input class='right' type="button" value="Start Over" onclick='window.location.reload()'/>
+    <br/>
+    <p class='right'>See on <a target='_blank' href="https://www.lds.org/topics/family-proclamation">LDS.org</a></p>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
+  <script>
+
+    document.getElementById('level').addEventListener('change', (e) => {
+      update_level(e.target);
+    });
+    
+    [...document.querySelectorAll('details.save-state')].forEach(details => {
+      details.open = window.__settings__[details.id];
+      details.addEventListener('toggle', () => {
+        window.__settings__[details.id] = details.open || "";
+        saveSettings();
+      });
+    });
+    
+    [...document.querySelectorAll('input.save-state')].forEach(input => {
+      input.value = window.__settings__[input.id];
+      input.addEventListener('change', () => {
+        window.__settings__[input.id] = input.value || "";
+        saveSettings();
+      });
+    });
+
+  </script>
+</body>
+
+</html>
