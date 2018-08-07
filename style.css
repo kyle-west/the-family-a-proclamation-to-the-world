@@ -16,3 +16,14 @@ h1,h3,h5 {
 .right {
   float: right;
 }
+
+.shadow-link,
+.shadow-link * {
+  font-family: monospace;
+  color: lightgrey;
+}
+
+.shadow-link:hover,
+.shadow-link *:hover {
+  color: blue;
+}
