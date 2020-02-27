@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ "$1" != "" ]; then 
-  python3 -m http.server "$1"
-else
-  python3 -m http.server 5000
-fi
